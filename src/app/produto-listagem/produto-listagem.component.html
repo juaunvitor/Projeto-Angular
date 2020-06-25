@@ -1,11 +1,50 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hDC Agency - a sua agência web</title>
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Scripts (jQuery) -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
+    <!-- Progress Bar -->
+    <script src="js/progressbar.min.js"></script>
+  </head>
+
+
 <h1>
     Produtos
 </h1>
-<button [routerLink]="['/cadastro']">Adicionar</button>
-<ul>
-    <li *ngFor="let produto of produtos">
-        <strong>{{produto.id}}</strong> - {{produto.descricao}} - <em>{{produto.preco | currency:'R$'}}</em>
-        &nbsp;<button [routerLink]="['/editar', produto.id]">Editar</button>
-        &nbsp;<button (click)="excluir(produto)">Excluir</button>
-    </li>
-</ul>
+<button class="btn btn-dark" [routerLink]="['/cadastro']">Adicionar</button>
+<button class="btn btn-dark" [routerLink]="['/Listar']">Listar</button>
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">ID</th>
+        <th scope="col">Produto</th>
+        <th scope="col">Fornecedor</th>
+        <th scope="col">Valor de Compra</th>
+        <th scope="col">Valor de Venda</th>
+        <th scope="col">Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <th scope="row">{{produto.id}}</th>
+        <td>{{produto.descricao}}</td>
+        <td>{{produto.fornecedor}}</td>
+        <td>{{produto.valorCompra | currency:'R$'}}</td>
+        <td>{{produto.valorVenda | currency:'R$'}}</td>
+        <td>{{produto.quantidade}}</td>
+        &nbsp;<button class="btn btn-dark" [routerLink]="['/editar', produto.id]">Editar</button>
+        &nbsp;<button class="btn btn-dark" (click)="excluir(produto)">Excluir</button>
+      </tr>
+    </tbody>
+  </table>

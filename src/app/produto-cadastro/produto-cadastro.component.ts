@@ -19,7 +19,10 @@ export class ProdutoCadastroComponent implements OnInit {
   ) {
     this.produto = {
       descricao: '',
-      preco: 0
+      fornecedor: '',
+      valorCompra: 0,
+      valorVenda: 0,
+      quantidade: 0
     };
   }
 
